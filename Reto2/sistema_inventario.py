@@ -63,7 +63,7 @@ class Inventario:
                 print(f"{producto.nombre:<20}{producto.precio:<10.2f}{producto.cantidad:<10}{producto.calcular_valor_total():<15.2f}")
 
 
-def menu_interactivo():
+def menu_principal():
     inventario = Inventario()
 
     while True:
@@ -106,4 +106,4 @@ def menu_interactivo():
 
 
 if __name__ == "__main__":
-    menu_interactivo()
+    menu_principal()
