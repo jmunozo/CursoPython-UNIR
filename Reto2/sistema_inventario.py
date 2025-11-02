@@ -2,8 +2,12 @@
 
 class Producto:
     def __init__(self, nombre: str, precio: float, cantidad: int):
-        if not nombre:
-            raise ValueError("El nombre no puede estar vacío.")
+        if not isinstance(nombre, str) or not nombre.strip():
+            raise ValueError("El nombre debe ser una cadena no vacía.")
+        if not isinstance(precio, (int, float)):
+            raise TypeError("El precio debe ser un número (int o float).")
+        if not isinstance(cantidad, int):
+            raise TypeError("La cantidad debe ser un número entero.")
         if precio < 0:
             raise ValueError("El precio debe ser mayor o igual a cero.")
         if cantidad < 0:
@@ -34,25 +38,29 @@ class Inventario:
     def __init__(self):
         self.productos = {}
 
-    def añadir_producto(self, producto: Producto):
-        if producto.nombre in self.productos:
+    def agregar_producto(self, producto: Producto):
+        nombre_normalizado = producto.nombre.lower()
+        if nombre_normalizado in self.productos:
             raise ValueError(f"El producto '{producto.nombre}' ya existe en el inventario.")
-        self.productos[producto.nombre] = producto
+        self.productos[nombre_normalizado] = producto
 
     def buscar_producto(self, nombre: str) -> Producto:
-        if nombre not in self.productos:
-            raise ValueError(f"El producto '{nombre}' no se encuentra en el inventario.")
-        return self.productos[nombre]
+        nombre_normalizado = nombre.lower()
+        if nombre_normalizado in self.productos:
+            return self.productos[nombre_normalizado]
+        raise ValueError(f"El producto '{nombre}' no se encuentra en el inventario.")
 
-    def calcular_valor_total_inventario(self) -> float:
+    def calcular_valor_inventario(self) -> float:
         return sum(producto.calcular_valor_total() for producto in self.productos.values())
 
-    def mostrar_inventario(self):
+    def listar_productos(self):
         if not self.productos:
             print("El inventario está vacío.")
         else:
+            print(f"{'Nombre':<20}{'Precio':<10}{'Cantidad':<10}{'Valor Total':<15}")
+            print("-" * 55)
             for producto in self.productos.values():
-                print(producto)
+                print(f"{producto.nombre:<20}{producto.precio:<10.2f}{producto.cantidad:<10}{producto.calcular_valor_total():<15.2f}")
 
 
 def menu_interactivo():
@@ -60,9 +68,9 @@ def menu_interactivo():
 
     while True:
         print("\n--- Menú de Inventario ---")
-        print("1. Añadir producto")
+        print("1. Agregar producto")
         print("2. Buscar producto")
-        print("3. Mostrar inventario")
+        print("3. Listar productos")
         print("4. Calcular valor total del inventario")
         print("5. Salir")
 
@@ -74,17 +82,17 @@ def menu_interactivo():
                 precio = float(input("Ingrese el precio del producto: "))
                 cantidad = int(input("Ingrese la cantidad del producto: "))
                 producto = Producto(nombre, precio, cantidad)
-                inventario.añadir_producto(producto)
-                print("Producto añadido exitosamente.")
+                inventario.agregar_producto(producto)
+                print("Producto agregado exitosamente.")
             elif opcion == "2":
                 nombre = input("Ingrese el nombre del producto a buscar: ")
                 producto = inventario.buscar_producto(nombre)
                 print("Producto encontrado:", producto)
             elif opcion == "3":
                 print("Inventario:")
-                inventario.mostrar_inventario()
+                inventario.listar_productos()
             elif opcion == "4":
-                valor_total = inventario.calcular_valor_total_inventario()
+                valor_total = inventario.calcular_valor_inventario()
                 print(f"El valor total del inventario es: {valor_total}")
             elif opcion == "5":
                 print("Saliendo del sistema...")
