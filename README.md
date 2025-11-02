@@ -1,44 +1,48 @@
-# Calculadora de Promedios (Curso Python - UNIR)
+# Proyectos: Reto1 y Reto2
 
-Este pequeño programa en Python permite ingresar materias y sus calificaciones, calcula el promedio general, identifica materias aprobadas y reprobadas, y muestra la materia con la mejor y peor calificación.
+Este repositorio contiene dos proyectos desarrollados en Python, diseñados para practicar conceptos fundamentales de programación.
 
-Está diseñado para ser sencillo y fácil de usar. El programa usa programación estructurada
+📂 Reto1/
+    └── calculadora_promedios.py # Programa para calcular promedios de materias 
+📂 Reto2/ 
+    └── sistema_inventario.py # Sistema básico de inventario con POO
 
-## Qué incluye
+## Estructura del Repositorio
 
-- `calculadora_promedios.py`: implementación interactiva que solicita al usuario materias y calificaciones.
-- Funciones principales:
-  - `ingresar_calificaciones()` — pide nombres de materias y calificaciones.
-  - `calcular_promedio(calificaciones)` — devuelve el promedio de las calificacioens ingresadas.
-  - `determinar_estado(calificaciones, umbral=5.0)` — devuelve lista de aprobados y reprobados.
-  - `encontrar_extremos(calificaciones)` — devuelve lista de la mayor y menor calificación.
+### Reto1: Calculadora de Promedios
+- **Archivo:** `calculadora_promedios.py`
+- **Descripción:** Este programa permite ingresar materias y sus calificaciones, calcula el promedio general, identifica materias aprobadas y reprobadas, y muestra la materia con la mejor y peor calificación.
+- **Funciones principales:**
+  - `ingresar_calificaciones()`: Solicita nombres de materias y calificaciones.
+  - `calcular_promedio(calificaciones)`: Calcula el promedio general.
+  - `determinar_estado(calificaciones, umbral=5.0)`: Identifica materias aprobadas y reprobadas.
+  - `encontrar_extremos(calificaciones)`: Encuentra la mejor y peor calificación.
+
+### Reto2: Sistema de Inventario
+- **Archivo:** `sistema_inventario.py`
+- **Descripción:** Sistema básico de inventario que utiliza Programación Orientada a Objetos (POO) para gestionar productos y realizar operaciones de inventario.
+- **Características principales:**
+  - **Clase Producto:** Gestiona productos con atributos como nombre, precio y cantidad. Incluye métodos para actualizar datos y calcular el valor total del producto.
+  - **Clase Inventario:** Permite agregar, buscar productos, listar todos los productos y calcular el valor total del inventario.
+  - **Menú interactivo:** Ofrece una interfaz para realizar operaciones como agregar productos, buscar por nombre, listar productos y calcular el valor total del inventario.
+  - **Manejo de excepciones:** Valida entradas y maneja errores como datos inválidos o productos no encontrados.
 
 ## Requisitos
-
 - Python 3.6 o superior.
-- No hay dependencias externas.
+- No se requieren dependencias externas.
 
-## Uso (ejecución interactiva)
+## Ejecución de los Programas
 
-Abre una terminal (PowerShell en Windows) en la carpeta del proyecto y ejecuta:
+1. **Reto1:**
+   - Navega al directorio correspondiente.
+   - Ejecuta el archivo con:
+     ```bash
+     python calculadora_promedios.py
+     ```
 
-```powershell
-python calculadora_promedios.py
-```
-
-Sigue las instrucciones en pantalla:
-- Ingresa el nombre de la materia y presiona ENTER.
-- Ingresa la calificación (número entre 0 y 10). Puedes usar coma o punto decimal.
-- Responde `s` o `n` cuando se te pregunte si deseas ingresar otra materia.
-- Para terminar de ingresar materias, simplemente presiona ENTER en el prompt del nombre.
-
-Al finalizar, se mostrará un resumen con:
-- Lista de materias y sus calificaciones.
-- Promedio general.
-- Materias aprobadas y reprobadas ( calificación >= 5.0 : Aprobado).
-- Materia con mejor y peor calificación.
-
-## Notas importantes
-
-- El programa valida que las calificaciones estén entre 0 y 10 y rechaza entradas no numéricas.
-- Si no se ingresa ninguna materia, el programa muestra un mensaje y termina.
+2. **Reto2:**
+   - Navega al directorio correspondiente.
+   - Ejecuta el archivo con:
+     ```bash
+     python sistema_inventario.py
+     ```
