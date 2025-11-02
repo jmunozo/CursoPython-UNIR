@@ -3,9 +3,9 @@
 Este repositorio contiene dos proyectos desarrollados en Python, diseñados para practicar conceptos fundamentales de programación.
 
 📂 Reto1/
-    └── calculadora_promedios.py # Programa para calcular promedios de materias 
-📂 Reto2/ 
-    └── sistema_inventario.py # Sistema básico de inventario con POO
+└── calculadora_promedios.py  # Calcula promedios de materias
+📂 Reto2/
+└── sistema_inventario.py     # Sistema básico de inventario con POO
 
 ## Estructura del Repositorio
 
